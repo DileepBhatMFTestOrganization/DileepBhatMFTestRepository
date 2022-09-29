@@ -13,8 +13,8 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration) ".\eShopOnWeb-main\eShopOnWeb.sln"
-  displayName: 'dotnet build $(buildConfiguration) ".\eShopOnWeb-main\eShopOnWeb.sln"'
+- script: dotnet build --configuration $(buildConfiguration) eShopOnWeb.sln
+  displayName: 'dotnet build $(buildConfiguration) eShopOnWeb.sln'
 - task: FortifyOnDemandStatic@8
   inputs:
     FortifyProjects: '$(build.artifactstagingdirectory)'
@@ -27,5 +27,5 @@ steps:
     InProgressScanActionType: '2'
     RemediationScanPreference: '0'
     BuildType: 'msbuild'
-    BuildFile: '.\eShopOnWeb-main\eShopOnWeb.sln'
+    BuildFile: 'eShopOnWeb.sln'
     PolicyFailAction: '1'
