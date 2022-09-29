@@ -17,7 +17,7 @@ steps:
   displayName: 'dotnet build $(buildConfiguration) eShopOnWeb.sln'
 - task: FortifyOnDemandStatic@8
   inputs:
-    FortifyProjects: '$(build.artifactstagingdirectory)'
+    FortifyProjects: '$(Build.SourcesDirectory)'
     FodConnection: 'FOD_Local_Connection'
     ReleaseOptions: '0'
     ReleaseId: 277
