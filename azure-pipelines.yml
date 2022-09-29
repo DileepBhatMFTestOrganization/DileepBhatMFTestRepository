@@ -27,5 +27,5 @@ steps:
     InProgressScanActionType: '2'
     RemediationScanPreference: '0'
     BuildType: 'msbuild'
-    BuildFile: 'eShopOnWeb.sln'
+    BuildFile: '.\eShopOnWeb-main\eShopOnWeb.sln'
     PolicyFailAction: '1'
