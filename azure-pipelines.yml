@@ -13,9 +13,8 @@ variables:
   buildConfiguration: 'Debug'
 
 steps:
-- bash: 
-   $PATH='/c/Program Files/Microsoft Visual Studio/2022/Enterprise/MSBuild/Current/bin':$PATH
-   echo $PATH
+- script: |
+   echo '##vso[task.setvariable variable=path]$(PATH):/c/Program Files/Microsoft Visual Studio/2022/Enterprise/MSBuild/Current/bin'
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '11'
