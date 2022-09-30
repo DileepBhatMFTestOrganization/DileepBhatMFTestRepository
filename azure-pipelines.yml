@@ -13,6 +13,8 @@ variables:
   buildConfiguration: 'Debug'
 
 steps:
+- bash: 
+   PATH="C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\bin":$PATH
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '11'
