@@ -18,10 +18,8 @@ steps:
     versionSpec: '11'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
-- task: MSBuild@1
-  inputs:
-    solution: '**/*.sln'
-    msbuildArchitecture: 'x64'
+- script: dotnet build --configuration $(buildConfiguration) eShopOnWeb.sln
+  displayName: 'dotnet build $(buildConfiguration) eShopOnWeb.sln'
 - task: FortifyOnDemandStatic@8
   inputs:
     FortifyProjects: '$(Build.SourcesDirectory)'
