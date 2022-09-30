@@ -18,8 +18,6 @@ steps:
     versionSpec: '11'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
-- script: dotnet build --configuration $(buildConfiguration) eShopOnWeb.sln
-  displayName: 'dotnet build $(buildConfiguration) eShopOnWeb.sln'
 - task: FortifyOnDemandStatic@8
   inputs:
     FortifyProjects: '$(Build.SourcesDirectory)'
@@ -31,5 +29,6 @@ steps:
     OverrideScanSettings: '2'
     InProgressScanActionType: '2'
     RemediationScanPreference: '0'
-    BuildType: 'none'
+    BuildType: 'msbuild'
+    BuildFile: 'eShopOnWeb.sln'
     PolicyFailAction: '0'
