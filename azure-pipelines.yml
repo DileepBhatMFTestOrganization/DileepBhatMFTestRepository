@@ -12,9 +12,6 @@ pool:
 variables:
   buildConfiguration: 'Debug'
 
-steps:
-- script: dotnet build --configuration $(buildConfiguration) eShopOnWeb.sln
-  displayName: 'dotnet build $(buildConfiguration) eShopOnWeb.sln'
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '11'
