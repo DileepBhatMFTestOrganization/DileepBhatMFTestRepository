@@ -16,7 +16,7 @@ steps:
 # - script: |
 #    echo '##vso[task.setvariable variable=path]$PATH:/c/Program Files/Microsoft Visual Studio/2022/Enterprise/MSBuild/Current/bin'
 - script: |
-    echo '##vso[task.prependpath]/c/Program Files/Microsoft Visual Studio/2022/Enterprise/MSBuild/Current/bin'
+    echo '##vso[task.prependpath]C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\bin'
 - script: |
     msbuild --version
 - task: JavaToolInstaller@0
