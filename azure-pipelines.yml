@@ -29,5 +29,6 @@ steps:
     OverrideScanSettings: '2'
     InProgressScanActionType: '2'
     RemediationScanPreference: '0'
-    BuildType: 'none'
-    PolicyFailAction: '1'
+    BuildType: 'msbuild'
+    BuildFile: 'eShopOnWeb.sln'
+    PolicyFailAction: '0'
