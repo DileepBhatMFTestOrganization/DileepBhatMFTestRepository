@@ -18,6 +18,10 @@ steps:
     versionSpec: '11'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
+- task: MSBuild@1
+  inputs:
+    solution: '**/*.sln'
+    msbuildArchitecture: 'x64'
 - task: FortifyOnDemandStatic@8
   inputs:
     FortifyProjects: '$(Build.SourcesDirectory)'
