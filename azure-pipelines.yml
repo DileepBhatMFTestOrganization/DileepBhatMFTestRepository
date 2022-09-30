@@ -1,0 +1,30 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  buildConfiguration: 'Debug'
+
+steps:
+- script: dotnet build --configuration $(buildConfiguration) eShopOnWeb.sln
+  displayName: 'dotnet build $(buildConfiguration) eShopOnWeb.sln'
+- task: FortifyOnDemandStatic@8
+  inputs:
+    FortifyProjects: '$(Build.SourcesDirectory)'
+    FodConnection: 'FOD_Local_Connection'
+    ReleaseOptions: '0'
+    ReleaseId: 277
+    EntitlementSelection: '1'
+    EntitlementPreference: '1'
+    OverrideScanSettings: '2'
+    InProgressScanActionType: '2'
+    RemediationScanPreference: '0'
+    BuildType: 'none'
+    PolicyFailAction: '0'
