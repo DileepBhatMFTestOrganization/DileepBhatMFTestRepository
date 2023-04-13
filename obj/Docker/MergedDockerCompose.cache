@@ -1,0 +1,79 @@
+name: dockercompose12071749935710233839
+services:
+  eshoppublicapi:
+    build:
+      context: C:\GithubRepos\DileepBhatMFTestRepository
+      dockerfile: src/PublicApi/Dockerfile
+    depends_on:
+      sqlserver:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+      ASPNETCORE_URLS: http://+:80
+    image: eshoppublicapi
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5200"
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\DiBhat\.aspnet\https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\DiBhat\.microsoft\usersecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+  eshopwebmvc:
+    build:
+      context: C:\GithubRepos\DileepBhatMFTestRepository
+      dockerfile: src/Web/Dockerfile
+    depends_on:
+      sqlserver:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+      ASPNETCORE_URLS: http://+:80
+    image: eshopwebmvc
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5106"
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\DiBhat\.aspnet\https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\DiBhat\.microsoft\usersecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+  sqlserver:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: '@someThingComplicated1234'
+    image: mcr.microsoft.com/azure-sql-edge
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 1433
+      published: "1433"
+      protocol: tcp
+networks:
+  default:
+    name: dockercompose12071749935710233839_default
